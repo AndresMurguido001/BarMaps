@@ -1,0 +1,61 @@
+body {
+  margin: 0;
+  padding-top: 65px;
+  font-family: sans-serif;
+  height: 100%;
+}
+.main {
+  background: linear-gradient(to right bottom, rgba(145, 145, 145, 0.8),rgba(252, 249, 249, 0.4)), url("https://images.pexels.com/photos/63633/bar-local-cong-ireland-63633.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
+  background-position: center;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  position: absolute;
+  display: block;
+  height: 80vh;
+  width: 100vw;
+}
+.welcome {
+  margin-top: 150px;
+  margin-bottom: 150px;
+}
+.overlay {
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+.welcome form {
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: -100px;
+  margin-bottom: 60px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+.welcome .card .icon-wrap {
+  display: block;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin-top: 22px;
+  border-top: 2px solid #ccc;
+}
+.welcome .card .icon-top-card {
+  font-size: 50px;
+  position: relative;
+  border: 2px solid #ccc;
+  padding: 5px 12px;
+  border-radius: 15px;
+  top: -32px;
+  background-color: #fff;
+}
+footer {
+  height: 100px;
+  position:absolute;
+  bottom: 0;
+  width: 100%;
+}
