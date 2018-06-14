@@ -7,10 +7,8 @@ import jwt_decode from 'jwt-decode';
 import setAuthToken from './utils/setAuthToken'
 import { setCurrentUser } from './actions/authActions'
 import { logoutUser } from './actions/authActions'
-import { getCurrentLocation } from './actions/locationActions'
 //Components
 import Home from './components/Home'
-import Footer from './components/common/Footer'
 import Profile from './components/Profile'
 import Login from './components/Login'
 import NavBar from './components/Navbar'
@@ -26,7 +24,7 @@ if (localStorage.jwtToken) {
     store.dispatch(logoutUser())
     // //Clear Profile
     window.location.href = '/login'
-  }  
+  }
 }
 
 

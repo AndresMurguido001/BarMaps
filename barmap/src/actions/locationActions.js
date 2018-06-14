@@ -1,5 +1,7 @@
 import { GET_CITY_BARS, GET_CURRENT_LOCATION, CLEAR_CURRENT_LOCATION, GET_ERRORS } from './types';
 import axios from 'axios';
+import keys from '../config/keys'
+
 
 
 export const getCurrentLocation = () => dispatch => {
@@ -28,3 +30,20 @@ export const getCurrentLocation = () => dispatch => {
   }
   navigator.geolocation.getCurrentPosition(success, error, options);
 }
+
+export const getCityBars = (places) => dispatch => { 
+  let miamiBars = []
+    places.map((place, i) => {
+      let singleBar = ({
+        name: place.name,
+        address: place.vicinity,
+        key: i
+      })
+      miamiBars.push(singleBar)
+    })  
+    dispatch({
+      type: GET_CITY_BARS,
+      payload: miamiBars      
+    })
+    
+  }

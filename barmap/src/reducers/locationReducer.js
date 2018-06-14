@@ -2,7 +2,7 @@ import { GET_CURRENT_LOCATION, GET_CITY_BARS } from '../actions/types'
 
 const initialState = {
   userLocation: {},
-  localBars: {}
+  localBars: []
 }
 
 export default function(state=initialState, action){
@@ -12,6 +12,15 @@ export default function(state=initialState, action){
       ...state,
       userLocation: action.payload
     }
+    case GET_CITY_BARS:
+      return {
+        ...state,
+        localBars: [
+          ...state.localBars,
+          ...action.payload
+        ]
+
+      }
 
     default:
       return state

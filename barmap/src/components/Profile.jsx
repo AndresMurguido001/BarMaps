@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { logoutUser } from '../actions/authActions';
 import { getCurrentLocation } from '../actions/locationActions'
-import MapComponent from './maps/MapComponent'
+import MyFancyComponent from './maps/MapComponent'
 import keys from '../config/keys'
 
 class Profile extends Component {
@@ -17,16 +17,17 @@ class Profile extends Component {
     this.onClick = this.onClick.bind(this);
   }
   componentWillReceiveProps(nextProps) {
-    if (nextProps.userLocation) {
+    if (nextProps.userLocation){
       this.setState({
-        location: nextProps.userLocation,
-        locationReceived: true
+        locationReceived: true,
+        location: nextProps.userLocation
       })
     }
+
   }
 
   componentWillMount() {
-    this.props.getCurrentLocation()
+    this.props.getCurrentLocation();    
   }
 
 
@@ -38,14 +39,20 @@ class Profile extends Component {
   render() {
     const { error } = this.state
     let { user } = this.props.auth
-
+    let { locationReceived } = this.state;
     return (
       <div className="container">
         <div className="row">
           <div className="col-xl-8">
+            <h4 className="display-5">
+              Get your drink on!
+            </h4>
+            <p className="text-lead">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit itaque, debitis, suscipit error dolorem magni labore, est eligendi accusantium impedit, minima ipsum quae adipisci cupiditate perferendis minus repellat aut quidem qui. Facilis temporibus et officiis esse voluptatum dolorem dignissimos voluptatem.
+            </p>
           </div>
           <div className="col-xl-4">
-            <div className="card">
+            <div className="card mb-5">
               <div className="card-header">
                 <span>
                   <i className="fas fa-user"></i>
@@ -65,13 +72,7 @@ class Profile extends Component {
             </div>
           </div>
         </div>
-        {this.state.locationReceived ? (<MapComponent isMarkerShown={false}
-                                        googleMapURL={`https://maps.googleapis.com/maps/api/js?key=${keys.googleKey}`}
-                                        loadingElement={<div style={{ height: `100vh` }} />}
-                                        containerElement={<div style={{ height: `400px` }} />}
-                                        mapElement={<div style={{ height: `100vh` }} />}
-                                        center={this.state.location}
-                                      />) : <h2>Loading...</h2>}
+        { locationReceived ? <MyFancyComponent className="mt-5"/> : <h2>Loading...</h2> }
       </div>
     );
   }
@@ -82,7 +83,7 @@ Profile.propTypes = {
 const mapStateToProps = state => ({
   auth: state.auth,
   error: state.error,
-  userLocation: state.location.userLocation
+  userLocation: state.location.userLocation,
 })
 
 export default connect(mapStateToProps, { logoutUser, getCurrentLocation })(Profile);

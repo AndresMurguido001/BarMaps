@@ -3,6 +3,7 @@ const express = require("express");
 const user = require("./routes/api/user");
 const bodyparser = require("body-parser");
 const passport = require("passport");
+const cors = require('cors');
 
 const app = express();
 
@@ -14,6 +15,7 @@ const db = require("./config/keys").mongoURI
 mongoose.connect(db)
 .then(() => console.log("DB connected"))
 .catch(err => console.log(err))
+app.use(cors());
 // Passport middleware
 app.use(passport.initialize());
 //Configure passport
