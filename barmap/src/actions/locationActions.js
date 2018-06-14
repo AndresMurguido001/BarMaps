@@ -32,12 +32,15 @@ export const getCurrentLocation = () => dispatch => {
 }
 
 export const getCityBars = (places) => dispatch => { 
+
   let miamiBars = []
     places.map((place, i) => {
       let singleBar = ({
+        id: place.id,
         name: place.name,
         address: place.vicinity,
-        key: i
+        lat: place.geometry.location.lat(),
+        lng: place.geometry.location.lng()
       })
       miamiBars.push(singleBar)
     })  
